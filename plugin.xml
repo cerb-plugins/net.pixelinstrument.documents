@@ -1,0 +1,109 @@
+<!DOCTYPE plugin SYSTEM "../../libs/devblocks/plugin.dtd">
+<plugin>
+	<id>net.pixelinstrument.documents</id>
+	<name>[PI] Documents</name>
+	<description>Manage documents within Cerberus Version 1.0.0</description>
+	<author>Davide Cassenti</author>
+	<revision>1.0.0</revision>
+	<link>http://www.pixelinstrument.net</link>
+	
+	<!-- Dependencies -->
+	
+	<dependencies>
+		<require plugin_id="devblocks.core" version="2.0.0" />
+	</dependencies>
+	
+	
+	<!-- Patches -->
+	
+	<patches>
+		<patch version="1.0.0" revision="1" file="patches/1.0.0.php" />
+	</patches>
+	
+	
+	<!-- ACL -->
+	<acl>
+		<priv id="net.pixelinstrument.documents.acl.upload" label="net.pixelinstrument.documents.acl.upload" />
+		<priv id="net.pixelinstrument.documents.acl.download" label="net.pixelinstrument.documents.acl.download" />
+		<priv id="net.pixelinstrument.documents.acl.update" label="net.pixelinstrument.documents.acl.update" />
+		<priv id="net.pixelinstrument.documents.acl.update_all" label="net.pixelinstrument.documents.acl.update_all" />
+		<priv id="net.pixelinstrument.documents.acl.delete" label="net.pixelinstrument.documents.acl.delete" />
+		<priv id="net.pixelinstrument.documents.acl.export" label="net.pixelinstrument.documents.acl.export" />
+	</acl>
+	
+	
+	<!-- Exported Classes -->
+	
+	<class_loader>
+		<file path="api/dao/document.php">
+			<class name="DAO_Document" />
+			<class name="Model_Document" />
+			<class name="SearchFields_Document" />
+			<class name="View_Document" />
+		</file>
+	</class_loader>
+
+	<extensions>
+		<!-- Contexts -->
+		
+		<extension point="devblocks.context">
+			<id>net.pixelinstrument.contexts.document</id>
+			<name>Document</name>
+		</extension>
+		
+		<extension point="cerberusweb.page">
+			<id>net.pixelinstrument.documents.page</id>
+			<name>Documents Page</name>
+			<class>
+				<file>api/uri/documents.php</file>
+				<name>PiDocumentsPage</name>
+			</class>
+			<params>
+				<param key="uri" value="documents" />
+				<param key="menutitle" value="net.pixelinstrument.documents" />
+			</params>
+		</extension>
+		
+		
+		<!-- Documents Tabs -->
+		
+		<extension point="net.pixelinstrument.documents.tab">
+			<id>net.pixelinstrument.documents.tab.documents</id>
+			<name>Documents Tab</name>
+			<class>
+				<file>api/uri/documents.php</file>
+				<name>PiDocumentsTab</name>
+			</class>
+			<params>
+				<param key="uri" value="documents" />
+				<param key="title" value="net.pixelinstrument.documents" />
+			</params>
+		</extension>
+		
+		<!-- Org Documents Tab -->
+		<extension point="cerberusweb.org.tab">
+			<id>net.pixelinstrument.documents.org.tab</id>
+			<name>Documents Tab</name>
+			<class>
+				<file>api/uri/documents.php</file>
+				<name>PiDocumentsOrgTab</name>
+			</class>
+			<params>
+				<param key="uri" value="documents" />
+				<param key="title" value="net.pixelinstrument.documents.tab.org.title" />
+			</params>
+		</extension>
+
+		<!-- RSS -->
+		<extension point="cerberusweb.rss.source">
+			<id>net.pixelinstrument.documents.rss</id>
+			<name>Documents RSS</name>
+			<class>
+				<file>api/uri/documents.php</file>
+				<name>PiRssSource_Document</name>
+			</class>
+			<params>
+			</params>
+		</extension>	
+	</extensions>
+</plugin>

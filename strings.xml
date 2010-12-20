@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx14.dtd">
+<tmx version="1.4">
+	<header datatype="winres" segtype="sentence" adminlang="en-us" srclang="en-us" o-tmf="abc" />
+	<body>
+		<tu tuid='net.pixelinstrument.documents'>
+			<tuv xml:lang="en_US"><seg>documents</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.new_document'>
+			<tuv xml:lang="en_US"><seg>new document</seg></tuv>
+	    </tu>
+		 
+		<tu tuid='net.pixelinstrument.documents.upload_document'>
+			<tuv xml:lang="en_US"><seg>upload document</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.upload_new_document'>
+			<tuv xml:lang="en_US"><seg>upload new document</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.title'>
+			<tuv xml:lang="en_US"><seg>title</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.organization'>
+			<tuv xml:lang="en_US"><seg>organization</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.select_organization'>
+			<tuv xml:lang="en_US"><seg>select organization</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.file'>
+			<tuv xml:lang="en_US"><seg>file</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.file_name'>
+			<tuv xml:lang="en_US"><seg>file name</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.create_date'>
+			<tuv xml:lang="en_US"><seg>create date</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.confirm_delete'>
+			<tuv xml:lang="en_US"><seg>Are you sure you want to permanent delete the document?</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.tab.org.title'>
+			<tuv xml:lang="en_US"><seg>Documents</seg></tuv>
+	    </tu>
+		
+		
+		<!-- ACL -->
+		
+		<tu tuid='net.pixelinstrument.documents.acl.upload'>
+			<tuv xml:lang="en_US"><seg>[Documents] Can upload a document</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.acl.download'>
+			<tuv xml:lang="en_US"><seg>[Documents] Can download a document</seg></tuv>
+		</tu>
+		
+		<tu tuid='net.pixelinstrument.documents.acl.update'>
+			<tuv xml:lang="en_US"><seg>[Documents] Can update a document</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.acl.update_all'>
+			<tuv xml:lang="en_US"><seg>[Documents] Can bulk update documents</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.acl.delete'>
+			<tuv xml:lang="en_US"><seg>[Documents] Can delete a document</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.acl.export'>
+			<tuv xml:lang="en_US"><seg>[Documents] Can export documents lists to CSV/XML</seg></tuv>
+		</tu>
+		
+		
+		<!-- ERRORS -->
+		
+		<tu tuid='net.pixelinstrument.documents.error.cant_upload_document'>
+			<tuv xml:lang="en_US"><seg>You are not allowed to upload new documents</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.error.cant_update_document'>
+			<tuv xml:lang="en_US"><seg>You are not allowed to update documents</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.error.missing_org_id'>
+			<tuv xml:lang="en_US"><seg>You must associate the document to an organization</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.error.missing_title'>
+			<tuv xml:lang="en_US"><seg>You must choose a title for the document</seg></tuv>
+	    </tu>
+		
+		<tu tuid='net.pixelinstrument.documents.error.missing_file'>
+			<tuv xml:lang="en_US"><seg>You need to choose the document to upload</seg></tuv>
+	    </tu>
+
+	</body>
+</tmx>
+<!-- 
+	
+-->
