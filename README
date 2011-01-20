@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////
 
 	Cerberus 5 Documents Management
-    Plugin ID: net.pixelinstrument.documents
+	Plugin ID: net.pixelinstrument.documents
 	Licence: GPLv3 http://www.gnu.org/licenses/gpl-3.0.txt
 
 ////////////////////////////////////////////////////////////////
@@ -10,5 +10,5 @@ The plugin allows to manage documents withing the Cerberus Help Desk 5.
 
 === INSTALLATION ===
 - install and configure Cerberus Help Desk 5 (http://www.cerberusweb.com)
-- download the code in <Cerb5>/features/net.pixelinstrument.documents
+- download the code in <Cerb5>/storage/plugins/net.pixelinstrument.documents
 - activate the plugin under setup | Plugins & Features
