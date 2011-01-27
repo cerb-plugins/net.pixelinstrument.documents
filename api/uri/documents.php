@@ -3,6 +3,8 @@ define( 'DOCUMENTS_DIRECTORY', substr( dirname(dirname(dirname(dirname(dirname(_
 define( 'UPLOAD_DIRECTORY', dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))) . DOCUMENTS_DIRECTORY );
 
 abstract class Extension_DocumentsTab extends DevblocksExtension {
+    const POINT = 'net.pixelinstrument.documents.tab';
+    
 	function __construct($manifest) {
 		$this->DevblocksExtension($manifest);
 	}
@@ -39,7 +41,7 @@ class PiDocumentsPage extends CerberusPageExtension {
 		// Remember the last tab/URL
 		$visit = CerberusApplication::getVisit();
 		if(null == ($selected_tab = @$response->path[1])) {
-			$selected_tab = $visit->get(CerberusVisit::KEY_ACTIVITY_TAB, '');
+			$selected_tab = $visit->get(Extension_DocumentsTab::POINT, '');
 		}
 		$tpl->assign('selected_tab', $selected_tab);
 		
@@ -164,7 +166,7 @@ class PiDocumentsPage extends CerberusPageExtension {
 				$file_name = $_FILES['file']['name'];
 				
 				// move the uploaded file
-				if( !file_exists( $upload_dir . $org_id ) ) {
+				if( !@file_exists( $upload_dir . $org_id ) ) {
 					if( !mkdir( $upload_dir . $org_id, 0777, true ) )
 						return;
 				}
@@ -364,7 +366,7 @@ class PiDocumentsTab extends Extension_DocumentsTab {
 	function showTab() {
 		// Remember the tab
 		$visit = CerberusApplication::getVisit();
-		$visit->set(CerberusVisit::KEY_ACTIVITY_TAB, 'documents');
+		$visit->set(Extension_DocumentsTab::POINT, 'documents');
 		
 		$tpl = DevblocksPlatform::getTemplateService();
 		
