@@ -1,7 +1,4 @@
 <?php
-define( 'DOCUMENTS_DIRECTORY', substr( dirname(dirname(dirname(dirname(dirname(__FILE__))))), strlen(dirname(dirname(dirname(dirname(dirname(dirname(__FILE__))))))) ) . "/storage/documents/" );
-define( 'UPLOAD_DIRECTORY', dirname(dirname(dirname(dirname(dirname(dirname(__FILE__)))))) . DOCUMENTS_DIRECTORY );
-
 abstract class Extension_DocumentsTab extends DevblocksExtension {
     const POINT = 'net.pixelinstrument.documents.tab';
     
@@ -14,11 +11,25 @@ abstract class Extension_DocumentsTab extends DevblocksExtension {
 };
 
 class PiDocumentsPage extends CerberusPageExtension {
-	const DOCUMENTS_DIRECTORY = DOCUMENTS_DIRECTORY;
-	const UPLOAD_DIRECTORY = UPLOAD_DIRECTORY;
-
+    public static $DOCUMENTS_DIRECTORY;
+    public static $UPLOAD_DIRECTORY;
+    
 	function __construct($manifest) {
 		parent::__construct($manifest);
+        
+        $app_self = $_SERVER["SCRIPT_NAME"];
+		
+        if(DEVBLOCKS_REWRITE) {
+            $pos = strrpos($app_self,'/');
+            $app_self = substr($app_self,0,$pos) . '/';
+        } else {
+            $pos = strrpos($app_self,'index.php');
+            if(false === $pos) $pos = strrpos($app_self,'ajax.php');
+            $app_self = substr($app_self,0,$pos);
+        }
+        
+        PiDocumentsPage::$DOCUMENTS_DIRECTORY = $app_self . 'storage/documents/';
+        PiDocumentsPage::$UPLOAD_DIRECTORY = APP_STORAGE_PATH . '/documents/';
 	}
 		
 	function isVisible() {
@@ -33,7 +44,7 @@ class PiDocumentsPage extends CerberusPageExtension {
 	}
 	
 	function render() {
-		$tpl = DevblocksPlatform::getTemplateService();
+        $tpl = DevblocksPlatform::getTemplateService();
 		
 		$response = DevblocksPlatform::getHttpResponse();
 		$tpl->assign('request_path', implode('/',$response->path));
@@ -161,7 +172,7 @@ class PiDocumentsPage extends CerberusPageExtension {
 			// is an upload?
 			if( $upload ) {
 				// set variables
-				$upload_dir = PiDocumentsPage::UPLOAD_DIRECTORY;
+				$upload_dir = PiDocumentsPage::$UPLOAD_DIRECTORY;
 				$tmpfile = $_FILES['file']['tmp_name'];
 				$file_name = $_FILES['file']['name'];
 				
@@ -387,7 +398,7 @@ class PiDocumentsTab extends Extension_DocumentsTab {
 
 		$tpl->assign('view', $view);
 		
-		$tpl->assign('documents_directory', PiDocumentsPage::DOCUMENTS_DIRECTORY);
+		$tpl->assign('documents_directory', PiDocumentsPage::$DOCUMENTS_DIRECTORY);
 		
 		$tpl->display('devblocks:net.pixelinstrument.documents::documents.tpl');		
 	}
@@ -419,7 +430,7 @@ class PiDocumentsOrgTab extends Extension_OrgTab {
 
 		$tpl->assign('view', $view);
 		
-		$tpl->assign('documents_directory', PiDocumentsPage::DOCUMENTS_DIRECTORY);
+		$tpl->assign('documents_directory', PiDocumentsPage::$DOCUMENTS_DIRECTORY);
 		
 		$tpl->display('devblocks:net.pixelinstrument.documents::org_documents.tpl');
 	}
